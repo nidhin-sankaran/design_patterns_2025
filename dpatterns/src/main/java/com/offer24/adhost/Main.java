@@ -4,6 +4,7 @@ import com.offer24.adhost.prototype.configuration.ConfigType;
 import com.offer24.adhost.prototype.configuration.Configuration;
 import com.offer24.adhost.prototype.registry.ConfigProtoRegistry;
 import com.offer24.adhost.prototype.registry.ConfigRegistryImpl;
+import com.offer24.adhost.singleton.ConfigImpl;
 
 public class Main {
     public static void main(String[] args) {
@@ -39,6 +40,13 @@ public class Main {
 
         Configuration hard = registry.getPrototype(ConfigType.HARD).clone();
         System.out.println("hard" + hard.getType());
+
+
+        // singleton
+        ConfigImpl impl = ConfigImpl.getInstance();
+        ConfigImpl impl2 = ConfigImpl.getInstance();
+        System.out.println(impl);
+        System.out.println(impl2);
 
     }
 }
