@@ -1,5 +1,6 @@
 package com.offer24.adhost;
 
+import com.offer24.adhost.builder.Employee;
 import com.offer24.adhost.prototype.configuration.ConfigType;
 import com.offer24.adhost.prototype.configuration.Configuration;
 import com.offer24.adhost.prototype.registry.ConfigProtoRegistry;
@@ -47,6 +48,17 @@ public class Main {
         ConfigImpl impl2 = ConfigImpl.getInstance();
         System.out.println(impl);
         System.out.println(impl2);
+
+
+        // builder
+        Employee emp = Employee.EmployeeBuilder.getBuilder()
+                .setAge(50)
+                .setName("Vijay")
+                .setDepartment("Engineering")
+                .setDesignation("Senior mgr")
+                .setSalary(4000)
+                .build();
+        System.out.println(emp);
 
     }
 }
