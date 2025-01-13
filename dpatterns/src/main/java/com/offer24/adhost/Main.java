@@ -1,6 +1,9 @@
 package com.offer24.adhost;
 
 import com.offer24.adhost.builder.Employee;
+import com.offer24.adhost.factory.AudioPlayer;
+import com.offer24.adhost.factory.AudioPlayerFactory;
+import com.offer24.adhost.factory.MediaTypes;
 import com.offer24.adhost.prototype.configuration.ConfigType;
 import com.offer24.adhost.prototype.configuration.Configuration;
 import com.offer24.adhost.prototype.registry.ConfigProtoRegistry;
@@ -59,6 +62,15 @@ public class Main {
                 .setSalary(4000)
                 .build();
         System.out.println(emp);
+
+
+        // factory
+        AudioPlayer mp3 = AudioPlayerFactory.createAudioPlayer(MediaTypes.MP3);
+        AudioPlayer flac = AudioPlayerFactory.createAudioPlayer(MediaTypes.FLAC);
+        AudioPlayer wav = AudioPlayerFactory.createAudioPlayer(MediaTypes.WAV);
+        mp3.play();
+        flac.play();
+        wav.play();
 
     }
 }
