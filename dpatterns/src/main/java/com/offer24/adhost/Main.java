@@ -1,5 +1,13 @@
 package com.offer24.adhost;
 
+import com.offer24.adhost.Adapter.GoogleTransalatorAdapter;
+import com.offer24.adhost.Adapter.MsAdapter;
+import com.offer24.adhost.Adapter.TransalationProviderAdapter;
+import com.offer24.adhost.Adapter.TransalationReq;
+import com.offer24.adhost.Strategy.GuessStrategy;
+import com.offer24.adhost.Strategy.IndiaPricingStrategy;
+import com.offer24.adhost.Strategy.PricingManager;
+import com.offer24.adhost.Strategy.PricingType;
 import com.offer24.adhost.builder.Employee;
 import com.offer24.adhost.factory.AudioPlayer;
 import com.offer24.adhost.factory.AudioPlayerFactory;
@@ -71,6 +79,21 @@ public class Main {
         mp3.play();
         flac.play();
         wav.play();
+
+        // adapter
+        TransalationProviderAdapter adapter = new GoogleTransalatorAdapter();
+        adapter.transalate(new TransalationReq("English", "Malayalam"));
+        adapter.getSupportedLanguages();
+
+        TransalationProviderAdapter adapter2 = new MsAdapter();
+        adapter2.transalate(new TransalationReq("English", "Malayalam"));
+        adapter2.getSupportedLanguages();
+
+        // strategy
+        PricingManager pricingManager = new PricingManager(PricingType.GUESS, new GuessStrategy());
+        pricingManager.getPrice();
+        PricingManager pricingManager2 = new PricingManager(PricingType.INDIA, new IndiaPricingStrategy());
+        pricingManager2.getPrice();
 
     }
 }
